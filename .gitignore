@@ -3,3 +3,4 @@
 *.yml
 *.sass
 *.css.map
+/gitignore
