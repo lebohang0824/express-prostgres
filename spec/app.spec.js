@@ -15,7 +15,7 @@ describe("Testing express end points", () => {
 	it('Should post form', async () => {
 
 		const visitor = {
-			name: 'Portia Mkhabela',
+			name: 'John Blues',
 			age: 19,
 			date: '1/8/2000',
 			time: '12:00:00',
