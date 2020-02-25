@@ -9,18 +9,18 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded());
-app.use('/', express.static('public'));
+app.use('/new_visit', express.static('public'));
 
 // Template engine
 app.set('view engine', 'pug');
 
 // Home
-app.get('/', (req, res) => {
+app.get('/new_visit', (req, res) => {
 	return res.sendFile(`index.html`);
 });
 
 // Submit form
-app.post('/', async (req, res) => {
+app.post('/new_visit', async (req, res) => {
 
 	// Inputs
 	let name 		= req.body.name;
@@ -35,7 +35,6 @@ app.post('/', async (req, res) => {
 	const visitor = await addNewVisitor(name, age, date, time, assistant, comments);
 
 	return res.render('success', { data: visitor[0] });
-
 });
 
 const server = app.listen(3000, () => console.log('Express Server is running on Port: 3000'));

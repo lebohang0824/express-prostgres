@@ -7,7 +7,7 @@ describe("Testing express end points", () => {
 	const success = require('./html-success');
 
 	it('Should render form', async () => {
-		const res = await axios.get('http://127.0.0.1:3000/')
+		const res = await axios.get('http://127.0.0.1:3000/new_visit');
 
 		expect(res.data).toEqual(form);
 	});
@@ -23,11 +23,13 @@ describe("Testing express end points", () => {
 			comments: 'No Comment'
 		}
 
-		const res = await axios.post('http://127.0.0.1:3000/', visitor)
+		const res = await axios.post('http://127.0.0.1:3000/new_visit', visitor);
+
+		let id = res.data.match(/\d+/g)[2];
 
 		expect(res.data).toEqual(success(
-				1, visitor.name, visitor.age, visitor.date, visitor.time, visitor.assistant, visitor.comments
-			));
+				id, visitor.name, visitor.age, visitor.date, visitor.time, visitor.assistant, visitor.comments
+			));	
 	});
 
 });
